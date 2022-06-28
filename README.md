@@ -1,1 +1,1 @@
-# holbertonschool-AirBnB_clone
+# Juan Salinas
