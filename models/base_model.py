@@ -18,4 +18,4 @@ class BaseModel:
         pass
 
     def to_dict(self):
-        pass
+        return self.__dict__
