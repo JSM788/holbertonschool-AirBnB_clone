@@ -15,7 +15,7 @@ class BaseModel:
 
 
     def save(self):
-        pass
+        self.update_at = datetime.today()
 
     def to_dict(self):
         pass
