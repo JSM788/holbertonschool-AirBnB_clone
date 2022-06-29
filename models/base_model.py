@@ -15,9 +15,11 @@ class BaseModel:
 
 
     def save(self):
-        self.update_at = datetime.today()
+        self.updated_at = datetime.today()
 
     def to_dict(self):
-        return self.__dict__
-
-    
+        new_dic = self.__dict__.copy()
+        new_dic['__class__'] = self.__class__.__name__
+        new_dic.update({'created_at' : self.created_at.isoformat()})
+        new_dic.update({'updated_at' : self.updated_at.isoformat()})
+        return new_dic
