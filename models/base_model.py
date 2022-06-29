@@ -4,8 +4,8 @@ from uuid import uuid4
 
 
 class BaseModel:
-
-    def __init__(self):
+    
+    def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
@@ -19,3 +19,5 @@ class BaseModel:
 
     def to_dict(self):
         return self.__dict__
+
+    
