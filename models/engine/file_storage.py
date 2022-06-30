@@ -18,8 +18,9 @@ class FileStorage:
         dic_to_json = {}
         for k in FileStorage.__objects.keys():
             dic_to_json.update({k: FileStorage.__objects[k].to_dict()})
-        f = open(FileStorage.__file_path, 'w')
-        f.write(json.dumps(dic_to_json))
+        with open(FileStorage.__file_path, mode='w', encoding='utf-8') as f:
+            f.write(json.dumps(dic_to_json))
+
 
     def reload(self):
         pass
