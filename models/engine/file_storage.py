@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-import file_storage
+import json
+from models.base_model import BaseModel
 
 class FileStorage:
 
-    def __init__(self):
-        self.__file_path
-        self.__objects
+    __file_path = "file.json"
+    __objects = {}
         
     def all(self):
-        return self.__dict__.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
-        pass
+        obj_name = obj.__class__.__name__
+        FileStorage.__objects.update({f"{obj_name}.{obj.id}": obj})
 
     def save(self):
         pass
 
     def reload(self):
-        self.storagels
-
+        pass
