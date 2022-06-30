@@ -23,4 +23,17 @@ class FileStorage:
 
 
     def reload(self):
-        pass
+        json_file = FileStorage.__file_path
+        json_to_dic = {}
+        dic = {}
+        try:
+            with open(json_file, mode='r', encoding='utf-8') as f:
+                json_to_dic = json.load(f)
+            for k, v in json_to_dic.items():
+                clase = v['__class__']
+                del v['__class__']
+                dic.update({k: eval(clase)(**v)})
+            FileStorage.__objects = dic
+        except FileNotFoundError:
+            return
+
