@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import cmd
+from models import storage
+from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
 
@@ -18,12 +20,30 @@ class HBNBCommand(cmd.Cmd):
         """EOF signal to exit the program\n"""
         return True
 
-    def do_show(self, arg):
-        if not arg:
-            print("** class name missing **")
-        elif arg[0] not in HBNBCommand().__classes.keys():
+    def do_create(self, arg):
+        args = arg.split()
+        if len(args) == 0:
+            print('** class name missing **')
+        elif args[0] != 'BaseModel':
             print("** class doesn't exist **")
+        else:
+            o = BaseModel()
+            o.save()
+            print(o.id)
 
+    def do_show(self, arg):
+        all_dict = storage.all()
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] != 'BaseModel':
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif f"{arg[0]}.{arg[1]}" not in all_dict:
+            print("** no instance found **")
+        else:
+            print(all_dict[f"{arg[0]}{arg[1]}"])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
