@@ -5,6 +5,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
+
     def emptyline(self):
         """Do nothing upon receiving an empty line."""
         pass
@@ -16,6 +17,12 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF signal to exit the program\n"""
         return True
+
+    def do_show(self, arg):
+        if not arg:
+            print("** class name missing **")
+        elif arg[0] not in HBNBCommand().__classes.keys():
+            print("** class doesn't exist **")
 
 
 if __name__ == '__main__':
