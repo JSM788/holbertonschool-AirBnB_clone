@@ -40,10 +40,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
-        elif f"{arg[0]}.{arg[1]}" not in all_dict:
+        elif f"{args[0]}.{args[1]}" not in all_dict:
             print("** no instance found **")
         else:
-            print(all_dict[f"{arg[0]}{arg[1]}"])
+            print(all_dict[f"{args[0]}.{args[1]}"])
 
     def do_destroy(self, arg):
         args = arg.split()
