@@ -1,11 +1,17 @@
 #!/usr/bin/python3
 import cmd
 from models import storage
+from models.user import User
 from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
+
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User
+    }
 
 
     def emptyline(self):
@@ -24,10 +30,10 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print('** class name missing **')
-        elif args[0] != 'BaseModel':
+        elif args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
         else:
-            o = BaseModel()
+            o = HBNBCommand.classes[args[0]]()
             o.save()
             print(o.id)
 
@@ -36,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] != 'BaseModel':
+        elif args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -50,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
         json_to_dic = storage.all()
         if len(args) == 0:
             print('** class name missing **')
-        elif args[0] != 'BaseModel':
+        elif args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
         elif len(args) != 2:
             print('** instance id missing **')
@@ -63,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         args = arg.split()
         lst = []
-        if len(args) > 0 and args[0] != "BaseModel":
+        if len(args) > 0 and args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
         elif args:
             for i in storage.all().values():
