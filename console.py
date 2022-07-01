@@ -4,6 +4,13 @@ import json
 from models import storage
 from models.base_model import BaseModel
 
+def tf(x):
+    try:
+        return(eval(x))
+    except (NameError, SyntaxError):
+        return(x)
+
+
 class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
@@ -78,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
             print('** value missing **')
         else:
             o = json_to_dic[f'{args[0]}.{args[1]}']
-            setattr(o, args[2], args[3].replace('\"',''))
+            setattr(o, args[2], tf(args[3]))
             o.save()
 
     def do_all(self, arg):
