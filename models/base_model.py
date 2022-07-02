@@ -21,7 +21,7 @@ class BaseModel:
         self.updated_at = datetime.today()
 
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
-        if kwargs != {}:
+        if kwargs:
             for k, v in kwargs.items():
                 if k == "created_at" or k == "updated_at":
                     self.__dict__.update({k: datetime.strptime(v, t_format)})
