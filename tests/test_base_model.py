@@ -31,3 +31,5 @@ class TestBaseModel(unittest.TestCase):
         bm = BaseModel()
         c_at = bm.created_at
         self.assertIsInstance(c_at, datetime)
+
+
