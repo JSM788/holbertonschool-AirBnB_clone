@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import cmd
-import json
 from models import storage
 from models.user import User
 from models.place import Place
