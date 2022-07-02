@@ -10,6 +10,7 @@ from models.review import Review
 
 from models.base_model import BaseModel
 
+
 def tf(x):
     try:
         return(eval(x))
@@ -30,7 +31,6 @@ class HBNBCommand(cmd.Cmd):
         "Amenity": Amenity,
         "Review": Review
     }
-
 
     def emptyline(self):
         """Do nothing upon receiving an empty line."""
