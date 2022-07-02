@@ -1,0 +1,51 @@
+#!/usr/bin/env zsh
+# Bash script that:
+#  1- check your Python code against some of the style conventions in PEP 8.
+#  2- docs a Python file, Default formatter is google.
+#  3- formats Python code to conform to the PEP 8 style guide.
+
+#0
+
+
+#1
+if [ -e "tmp" ]
+then
+	rm tmp
+fi
+pycodestyle $1
+pycodestatus=$?
+if [ $pycodestatus -eq 0 ]
+then
+	echo "Pycodestyle: OK"
+	cat $1 | doq --formatter=google > tmp
+	echo -n "Doc formatter: "
+fi
+
+
+#2
+if [ -e "tmp" ] 
+then 
+	if [ -s "tmp" ]
+	then
+		cat tmp > $1
+		echo "OK - updated"
+	else
+		echo "OK - not updated"
+	fi
+
+	rm tmp
+fi
+
+
+#3
+if [ $pycodestatus -eq 0 ]
+then 
+	autopep8 --in-place --aggressive --aggressive $1
+	echo -n "PEP8 formatter: "
+	if [ $? -eq 0 ]
+	then
+		echo "APPLIED"
+	else
+		echo "FAIL"
+	fi
+fi

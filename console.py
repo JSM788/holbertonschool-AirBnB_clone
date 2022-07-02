@@ -12,6 +12,11 @@ from models.base_model import BaseModel
 
 
 def tf(x):
+    """tf.
+
+    Args:
+        x:
+    """
     try:
         return(eval(x))
     except (NameError, SyntaxError):
@@ -19,6 +24,8 @@ def tf(x):
 
 
 class HBNBCommand(cmd.Cmd):
+    """HBNBCommand.
+    """
 
     prompt = "(hbnb) "
 
@@ -45,6 +52,11 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
+        """do_create.
+
+        Args:
+            arg:
+        """
         args = arg.split()
         if len(args) == 0:
             print('** class name missing **')
@@ -56,6 +68,11 @@ class HBNBCommand(cmd.Cmd):
             print(o.id)
 
     def do_show(self, arg):
+        """do_show.
+
+        Args:
+            arg:
+        """
         all_dict = storage.all()
         args = arg.split()
         if len(args) == 0:
@@ -70,6 +87,11 @@ class HBNBCommand(cmd.Cmd):
             print(all_dict[f"{args[0]}.{args[1]}"])
 
     def do_destroy(self, arg):
+        """do_destroy.
+
+        Args:
+            arg:
+        """
         args = arg.split()
         json_to_dic = storage.all()
         if len(args) == 0:
@@ -85,6 +107,11 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_update(self, arg):
+        """do_update.
+
+        Args:
+            arg:
+        """
         args = arg.split()
         json_to_dic = storage.all()
         if len(args) == 0:
@@ -105,6 +132,11 @@ class HBNBCommand(cmd.Cmd):
             o.save()
 
     def do_all(self, arg):
+        """do_all.
+
+        Args:
+            arg:
+        """
         args = arg.split()
         lst = []
         if len(args) > 0 and args[0] not in HBNBCommand.classes.keys():
