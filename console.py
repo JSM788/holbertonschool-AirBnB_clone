@@ -148,8 +148,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             for i in storage.all().values():
                 lst.append(str(i))
-        print(lst)
 
-
+        if len(lst):
+            print(lst)
+    
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
