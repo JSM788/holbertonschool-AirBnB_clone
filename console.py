@@ -143,8 +143,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif args:
             for i in storage.all().values():
+                if args[0] == i.__class__.__name__:
+                    lst.append(str(i))
+        else:
+            for i in storage.all().values():
                 lst.append(str(i))
-            print(lst)
+        print(lst)
 
 
 if __name__ == '__main__':
