@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+import json
 from models import storage
 from models.user import User
 from models.place import Place
@@ -9,6 +10,13 @@ from models.amenity import Amenity
 from models.review import Review
 
 from models.base_model import BaseModel
+
+def tf(x):
+    try:
+        return(eval(x))
+    except (NameError, SyntaxError):
+        return(x)
+
 
 class HBNBCommand(cmd.Cmd):
 
@@ -76,6 +84,26 @@ class HBNBCommand(cmd.Cmd):
         else:
             del json_to_dic[f'{args[0]}.{args[1]}']
             storage.save()
+
+    def do_update(self, arg):
+        args = arg.split()
+        json_to_dic = storage.all()
+        if len(args) == 0:
+            print('** class name missing **')
+        elif args[0] != 'BaseModel':
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print('** instance id missing **')
+        elif f'{args[0]}.{args[1]}' not in json_to_dic:
+            print('** no instance found **')
+        elif len(args) == 2:
+            print('** attribute name missing **')
+        elif len(args) == 3:
+            print('** value missing **')
+        else:
+            o = json_to_dic[f'{args[0]}.{args[1]}']
+            setattr(o, args[2], tf(args[3]))
+            o.save()
 
     def do_all(self, arg):
         args = arg.split()
