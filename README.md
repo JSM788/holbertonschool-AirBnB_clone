@@ -1,11 +1,14 @@
 # AIRBNB PROJECT
+
 <p align="center">
-  <img src="https://postimg.cc/8fQvs7PW"/>
+  <img src="https://raw.githubusercontent.com/bdbaraban/AirBnB_clone/master/assets/hbnb_logo.png"/>
 </p>
 
 ## Description of the project
 
 This is the first part of the project that simulates an airbnb application in which we are creating a way to control the modules that our web page is going to use by intervening a database in json format. Here we apply object oriented programming, python data translation and command interpreted logic to deliver a local database that can be modified by commands.
+
+<p align="center"> <img src="https://raw.githubusercontent.com/daorejuela1/AirBnB_clone/master/images/console_airbnb.png"/> </p>
 
 ## Installation
 
@@ -15,8 +18,6 @@ This is the first part of the project that simulates an airbnb application in wh
 
 ## Console
 La consola es un intérprete de línea de comandos que permite la gestión del backend de HolbertonBnB. Se puede usar para manejar y manipular todas las clases utilizadas por la aplicación (logrado mediante llamadas al storageobjeto definido anteriormente).
-
-
 
 
 ## Run
@@ -59,6 +60,7 @@ La consola es un intérprete de línea de comandos que permite la gestión del b
 <div>
  <video class="center" src="">⁪</video>
 </div>
+
 ## Authors
 
 
