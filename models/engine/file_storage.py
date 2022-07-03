@@ -11,28 +11,29 @@ from models.review import Review
 
 
 class FileStorage:
-    """FileStorage.
+    """
+    Serialize/Deserialize python data
     """
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """all.
+        """
+        Return the dictionary __objects
         """
         return FileStorage.__objects
 
     def new(self, obj):
-        """new.
-
-        Args:
-            obj:
+        """
+        Create a new object
         """
         obj_name = obj.__class__.__name__
         FileStorage.__objects.update({f"{obj_name}.{obj.id}": obj})
 
     def save(self):
-        """save.
+        """
+        Serialize __objects to the JSON file __file_path
         """
         dic_to_json = {}
         for k in FileStorage.__objects.keys():
@@ -41,7 +42,8 @@ class FileStorage:
             f.write(json.dumps(dic_to_json))
 
     def reload(self):
-        """reload.
+        """
+        Deserialize the JSON file __file_path to __objects
         """
         json_file = FileStorage.__file_path
         json_to_dic = {}

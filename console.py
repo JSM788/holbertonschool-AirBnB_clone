@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" hbnb console """
+""" Defines the HBnB console """
 import cmd
 from models import storage
 from models.user import User
@@ -12,10 +12,8 @@ from models.base_model import BaseModel
 
 
 def tf(x):
-    """tf.
-
-    Args:
-        x:
+    """
+    Evaluates the expression passed to this method
     """
     try:
         return(eval(x))
@@ -24,7 +22,8 @@ def tf(x):
 
 
 class HBNBCommand(cmd.Cmd):
-    """HBNBCommand.
+    """
+    Defining the HBNBCommand command
     """
 
     prompt = "(hbnb) "
@@ -52,10 +51,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """do_create.
-
-        Args:
-            arg:
+        """
+        Create a new class instance and print its id
         """
         args = arg.split()
         if len(args) == 0:
@@ -68,10 +65,9 @@ class HBNBCommand(cmd.Cmd):
             print(o.id)
 
     def do_show(self, arg):
-        """do_show.
-
-        Args:
-            arg:
+        """
+        Display the string representation\
+        of a class instance of a given id
         """
         all_dict = storage.all()
         args = arg.split()
@@ -87,10 +83,8 @@ class HBNBCommand(cmd.Cmd):
             print(all_dict[f"{args[0]}.{args[1]}"])
 
     def do_destroy(self, arg):
-        """do_destroy.
-
-        Args:
-            arg:
+        """
+        Delete a class instance of a given id
         """
         args = arg.split()
         json_to_dic = storage.all()
@@ -107,10 +101,10 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_update(self, arg):
-        """do_update.
-
-        Args:
-            arg:
+        """
+        Update a class instance\
+        of a given id by adding or updating\
+        a given attribute key/value pair or dictionary
         """
         args = arg.split()
         json_to_dic = storage.all()
@@ -132,10 +126,9 @@ class HBNBCommand(cmd.Cmd):
             o.save()
 
     def do_all(self, arg):
-        """do_all.
-
-        Args:
-            arg:
+        """
+        Display string representations\
+        of all instances of a given class
         """
         args = arg.split()
         lst = []
@@ -151,6 +144,7 @@ class HBNBCommand(cmd.Cmd):
 
         if len(lst):
             print(lst)
-    
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

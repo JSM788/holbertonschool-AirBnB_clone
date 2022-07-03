@@ -6,15 +6,14 @@ from uuid import uuid4
 
 
 class BaseModel:
-    """BaseModel.
+    """
+    Represents the BaseModel class of the HBnB project
     """
 
     def __init__(self, *args, **kwargs):
-        """__init__.
-
-        Args:
-            args:
-            kwargs:
+        """
+        Constructor method\
+        that initializes the new BaseModel
         """
         self.id = str(uuid4())
         self.created_at = datetime.today()
@@ -31,18 +30,22 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """__str__.
+        """
+        Return the str representation\
+        of the BaseModel instance
         """
         return (f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}')
 
     def save(self):
-        """save.
+        """
+        Update updated_at with the current datetime
         """
         self.updated_at = datetime.today()
         models.storage.save()
 
     def to_dict(self):
-        """to_dict.
+        """
+        Return the dictionary of the BaseModel instance
         """
         new_dic = self.__dict__.copy()
         new_dic['__class__'] = self.__class__.__name__
