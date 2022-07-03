@@ -40,7 +40,11 @@ La consola es un intérprete de línea de comandos que permite la gestión del b
 | all | Prints all string representation of all instances based or not on the class name. Ex: `$ all BaseModel` |
 | update | Updates an instance based on the class name and `id` by adding or updating attribute (save the change into the JSON file). Ex: `$ update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com"` |
 
+## Usage example
 
+<p align="center">
+  <img src="https://github.com/JSM788/holbertonschool-AirBnB_clone/blob/main/visual/commands.gif"/>
+</p>
 
 
 ## Testing
@@ -57,9 +61,6 @@ La consola es un intérprete de línea de comandos que permite la gestión del b
   python3 unittest -m tests/test_console.py
 ```
 
-<div>
- <video class="center" src="">⁪</video>
-</div>
 
 ## Authors
 
