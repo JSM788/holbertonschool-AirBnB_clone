@@ -1,14 +1,14 @@
 # AIRBNB PROJECT
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bdbaraban/AirBnB_clone/master/assets/hbnb_logo.png"/>
+  <img src="https://github.com/JSM788/holbertonschool-AirBnB_clone/blob/main/visual/HBNB%20holberton.png"/>
 </p>
 
 ## Description of the project
 
 This is the first part of the project that simulates an airbnb application in which we are creating a way to control the modules that our web page is going to use by intervening a database in json format. Here we apply object oriented programming, python data translation and command interpreted logic to deliver a local database that can be modified by commands.
 
-<p align="center"> <img src="https://raw.githubusercontent.com/daorejuela1/AirBnB_clone/master/images/console_airbnb.png"/> </p>
+<p align="center"> <img src="https://github.com/JSM788/holbertonschool-AirBnB_clone/blob/main/visual/Consola.png"/> </p>
 
 ## Installation
 
