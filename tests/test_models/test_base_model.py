@@ -220,3 +220,10 @@ class TestBaseModel(unittest.TestCase):
         """
         bm = BaseModel()
         self.assertIsInstance(bm.id, str)
+
+    def test_save_updates_file(self):
+        bm = BaseModel()
+        bm.save()
+        bmid = "BaseModel." + bm.id
+        with open("file.json", "r") as f:
+            self.assertIn(bmid, f.read())
