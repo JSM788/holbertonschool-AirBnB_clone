@@ -19,7 +19,7 @@ This is the first part of the project that simulates an airbnb application in wh
 - Change directories into the repository: `cd holbertonschool-AirBnB_clone`
 
 ## Console
-La consola es un intérprete de línea de comandos que permite la gestión del backend de HolbertonBnB. Se puede usar para manejar y manipular todas las clases utilizadas por la aplicación (logrado mediante llamadas al storageobjeto definido anteriormente).
+The console is a command line interpreter that allows the management of the AIRBNB backend. It can be used to handle and manipulate all the classes used by the application (achieved by calls to the storage object defined above).
 
 
 ## Run
