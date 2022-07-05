@@ -149,25 +149,27 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         classname = re.findall(".*\\.", arg)[0][:-1]
         methodname = re.findall("\\..*\\(", arg)[0][1:-1]
-        arguments = re.findall("\\(.*\\)", arg)[0][1:-1]
+        arguments = re.findall("\\(.*\\)", arg)[0][2:-2]
 
         methods = {
-            "show": self.do_show,
-            "all": self.do_all,
-            "destroy": self.do_destroy,
-            "update": self.do_update,
-            "count": self.do_count
+            "show": self.do_show,  # 2 arguments classname id
+            "all": self.do_all,  # 1 argument classname
+            "destroy": self.do_destroy,  # 2 arguments classname id
+            "update": self.do_update,  # 4 arguments classname id attr value
+            "count": self.do_count  # 1 argument classname
         }
+        print(arguments)
 
         if methodname in methods:
-            methods[methodname](classname)
+            if methodname in ('all', 'count', 'show', 'destroy'):
+                methods[methodname](f'{classname} {arguments}')
 
     def do_count(self, arg):
         """
         Retrieve the number of instances of a given class
         """
         args = arg.split()
-        if arg not in HBNBCommand.classes.keys():
+        if args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't  exist **")
         else:
             count = 0
