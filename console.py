@@ -153,14 +153,14 @@ class HBNBCommand(cmd.Cmd):
 
         methods = {
             "show": self.do_show,
-            "all": self.do_all(classname),
+            "all": self.do_all,
             "destroy": self.do_destroy,
             "update": self.do_update,
             "count": self.do_count
         }
 
         if methodname in methods:
-            methods[methodname]
+            methods[methodname](classname)
 
     def do_count(self, arg):
         """
