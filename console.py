@@ -64,6 +64,9 @@ class HBNBCommand(cmd.Cmd):
             o = HBNBCommand.classes[args[0]]()
             o.save()
             print(o.id)
+        """
+
+        """
 
     def do_show(self, arg):
         """
@@ -82,6 +85,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(all_dict[f"{args[0]}.{args[1]}"])
+        """
+
+        """
 
     def do_destroy(self, arg):
         """
@@ -100,6 +106,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             del json_to_dic[f'{args[0]}.{args[1]}']
             storage.save()
+        """
+
+        """
 
     def do_update(self, arg):
         """
@@ -125,6 +134,9 @@ class HBNBCommand(cmd.Cmd):
             o = json_to_dic[f'{args[0]}.{args[1]}']
             setattr(o, args[2], tf(args[3]))
             o.save()
+        """
+
+        """
 
     def do_all(self, arg):
         """
@@ -145,15 +157,23 @@ class HBNBCommand(cmd.Cmd):
 
         if len(lst):
             print(lst)
+        """
+
+        """
 
     def default(self, arg):
-        classname = re.findall(".*\\.", arg)[0][:-1]
-        methodname = re.findall("\\..*\\(", arg)[0][1:-1]
-        arguments = re.findall("\\(.*\\)", arg)[0][2:-2]
-        print(type(classname))
-        print(type(methodname))
-        print(type(arguments))
-        print(arguments)
+        """default method.
+
+        Args:
+            arg: User input.
+        """
+        try:
+            classname = re.findall(".*\\.", arg)[0][:-1]
+            methodname = re.findall("\\..*\\(", arg)[0][1:-1]
+            arguments = eval(re.findall("\\(.*\\)", arg)[0])
+        except BaseException:
+            print("Invalid Input - retry...")
+            return
 
         methods = {
             "show": self.do_show,  # 2 arguments classname id
@@ -163,13 +183,26 @@ class HBNBCommand(cmd.Cmd):
             "count": self.do_count  # 1 argument classname
         }
 
-        if methodname in methods:
-            if methodname in ('all', 'count', 'show', 'destroy'):
-                methods[methodname](f'{classname} {arguments}')
-            elif methodname == 'update':
-                args = eval(re.findall("\\(.*\\)", arg)[0])
-                args = ' '.join(args)
+        if methodname not in methods:
+            return
+
+        if isinstance(arguments, str):
+            args = arguments
+        elif len(arguments) >= 2 and isinstance(arguments[1], dict):
+            dictionary = arguments[1]
+            for k, v in dictionary.items():
+                args = f'{arguments[0]} {k} {v}'
                 methods[methodname](f'{classname} {args}')
+            return
+        else:
+            try:
+                args = ' '.join(arguments)
+            except BaseException:
+                args = ''
+        methods[methodname](f'{classname} {args}')
+        """
+
+        """
 
     def do_count(self, arg):
         """
@@ -184,6 +217,9 @@ class HBNBCommand(cmd.Cmd):
                 if args[0] == obj.__class__.__name__:
                     count += 1
             print(count)
+        """
+
+        """
 
 
 if __name__ == '__main__':
