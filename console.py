@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Defines the HBnB console """
 import cmd
+import re
 from models import storage
 from models.user import User
 from models.place import Place
@@ -144,6 +145,21 @@ class HBNBCommand(cmd.Cmd):
 
         if len(lst):
             print(lst)
+
+    def default(self, arg):
+        classname = re.findall(".*\\.", arg)[0][:-1]
+        methodname = re.findall("\\..*\\(", arg)[0][1:-1]
+        arguments = re.findall("\\(.*\\)", arg)[0][1:-1]
+
+        methods = {
+            "show": self.do_show,
+            "all": self.do_all(classname),
+            "destroy": self.do_destroy,
+            "Update": self.do_update
+        }
+
+        if methodname in methods:
+            methods[methodname]
 
 
 if __name__ == '__main__':
