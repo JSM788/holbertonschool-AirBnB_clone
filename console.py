@@ -155,11 +155,26 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show,
             "all": self.do_all(classname),
             "destroy": self.do_destroy,
-            "Update": self.do_update
+            "update": self.do_update,
+            "count": self.do_count
         }
 
         if methodname in methods:
             methods[methodname]
+
+    def do_count(self, arg):
+        """
+        Retrieve the number of instances of a given class
+        """
+        args = arg.split()
+        if arg not in HBNBCommand.classes.keys():
+            print("** class doesn't  exist **")
+        else:
+            count = 0
+            for obj in storage.all().values():
+                if args[0] == obj.__class__.__name__:
+                    count += 1
+            print(count)
 
 
 if __name__ == '__main__':
