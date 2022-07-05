@@ -150,6 +150,10 @@ class HBNBCommand(cmd.Cmd):
         classname = re.findall(".*\\.", arg)[0][:-1]
         methodname = re.findall("\\..*\\(", arg)[0][1:-1]
         arguments = re.findall("\\(.*\\)", arg)[0][2:-2]
+        print(type(classname))
+        print(type(methodname))
+        print(type(arguments))
+        print(arguments)
 
         methods = {
             "show": self.do_show,  # 2 arguments classname id
@@ -158,11 +162,14 @@ class HBNBCommand(cmd.Cmd):
             "update": self.do_update,  # 4 arguments classname id attr value
             "count": self.do_count  # 1 argument classname
         }
-        print(arguments)
 
         if methodname in methods:
             if methodname in ('all', 'count', 'show', 'destroy'):
                 methods[methodname](f'{classname} {arguments}')
+            elif methodname == 'update':
+                args = eval(re.findall("\\(.*\\)", arg)[0])
+                args = ' '.join(args)
+                methods[methodname](f'{classname} {args}')
 
     def do_count(self, arg):
         """
