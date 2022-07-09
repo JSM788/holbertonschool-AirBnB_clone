@@ -211,4 +211,4 @@ ef0fdc863c02'}
 
 
 - Juan Salinas | [GitHub](https://github.com/JSM788)
-- Frank Christopher | [GitHub](https://github.com/QuispeFrank)
+- Frank Quispe | [GitHub](https://github.com/QuispeFrank)
