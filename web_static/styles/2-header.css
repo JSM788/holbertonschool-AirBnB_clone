@@ -3,3 +3,9 @@ header {
 	height: 70px;;
 	width: 100%;          
 }
+
+.logo {
+    width: 140px;
+    height: 60px;
+    background: url("images/logo.png");
+}
